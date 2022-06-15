@@ -21,7 +21,7 @@
     </div>
     <div class="col bg-warning pt-2 px-0 rounded-3">
       <h4>Total</h4>
-      <h1>000</h1>
+      <h1 id="total-money">000</h1>
     </div>
   </div>
 </div> 
@@ -45,13 +45,17 @@
 <script>
     document.getElementById('deposit-btn').addEventListener('click', function(){
         const depositInput= document.getElementById('deposit-input')
-        const depositValue = depositInput.value
+        const depositValue = parseFloat(depositInput.value)
         console.log(depositValue);
-        const depositMoney = document.getElementById('deposit-money')
-        depositMoney.innerText = depositValue
-        
-        depositInput.value= ''
 
+        const depositMoneyText = document.getElementById('deposit-money')
+        const depositMoney = parseFloat(depositMoneyText.innerText
+        )
+        const depositTotal = depositMoney + depositValue
+        depositMoneyText.innerText = depositTotal
+        
+        document.getElementById('total-money').innerText = depositTotal
+        depositInput.value= ''
     })
 </script>
 </body>
